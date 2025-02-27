@@ -20,6 +20,7 @@ signal setup_boat_selected(boat: Boats)
 var isPlacingBoat: bool = false
 
 signal setup_tile_focused_boat(coords: Vector2)
+signal boat_placed_on_tile_map(boat: Boats)
 
 func _init():
 	boardstates.resize(NUMBER_OF_BOARDS)

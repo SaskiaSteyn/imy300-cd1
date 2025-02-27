@@ -58,20 +58,23 @@ func preview_boat_on_tile(coord: Vector2) -> void:
 	var boatMiddle = load("res://assets/boat-middle-(128x128).png")
 	var boatFront = load("res://assets/boat-front-(128x128).png")
 	var bgWater = load("res://assets/bg-water-(128x128).png")
+	var oppBg = load("res://assets/opponent-bg-(128x128).png")
 	
 #	iterate over grid and resetting to water bg
 	for x in Global.GRID_SIZE.x:
 		for y in Global.GRID_SIZE.y:
-			
 			placementGridArray[x][y].texture_normal = bgWater
+			placementGridArray[x][y].texture_focused = oppBg
 	
 	placementGridArray[coord.x][coord.y].texture_focused = boatBack
+	placementGridArray[coord.x][coord.y].texture_normal = boatBack
 	var trackingCoord = coord.y + 1
 	
 	for x in selectedBoat:
 		placementGridArray[coord.x][trackingCoord].texture_normal = boatMiddle
 		trackingCoord+=1
 	placementGridArray[coord.x][trackingCoord].texture_normal = boatFront
+	Global.isPlacingBoat = false
 	
 
 
