@@ -1,0 +1,133 @@
+[gd_scene load_steps=7 format=3 uid="uid://lubpqv23k6ep"]
+
+[ext_resource type="Texture2D" uid="uid://bcsnu4pch3h3w" path="res://assets/menu-bg.png" id="1_r5n7r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dogdj"]
+bg_color = Color(0.0209147, 0.0098919, 0.329917, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlvv7"]
+content_margin_left = 50.0
+content_margin_top = 10.0
+content_margin_right = 50.0
+content_margin_bottom = 10.0
+bg_color = Color(0.313726, 0.858824, 0.827451, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddve3"]
+content_margin_left = 100.0
+content_margin_top = 10.0
+content_margin_right = 100.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlac3"]
+bg_color = Color(0.0196078, 0.0117647, 0.329412, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_r3lid"]
+Button/colors/font_color = Color(0.27451, 0.509804, 0.901961, 1)
+Button/colors/font_hover_color = Color(0.00784314, 0.301961, 0.596078, 1)
+Button/font_sizes/font_size = 50
+Button/styles/focus = SubResource("StyleBoxFlat_dogdj")
+Button/styles/hover = SubResource("StyleBoxFlat_tlvv7")
+Button/styles/normal = SubResource("StyleBoxFlat_ddve3")
+Button/styles/pressed = SubResource("StyleBoxFlat_rlac3")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_r5n7r")
+expand_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/Panel"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.5
+offset_top = -200.0
+offset_right = 343.5
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/Panel/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 250
+text = "Battleship"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/GridContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/GridContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="play" type="Button" parent="Control/Panel/GridContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_r3lid")
+text = "Play new game"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/Panel/GridContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="play" type="Button" parent="Control/Panel/GridContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_r3lid")
+text = "Exit game"
