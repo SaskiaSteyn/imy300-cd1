@@ -9,6 +9,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_pressed() -> void:
-	print("CARRIER SELECTED")
 	Global.isPlacingBoat = true
 	Global.setup_boat_selected.emit(Global.Boats.CARRIER)
+	self.disabled = true

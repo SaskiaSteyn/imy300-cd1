@@ -15,10 +15,33 @@ var boat: Global.Boats:
 	set(value):
 		boat = value
 
+var boatID: int:
+	get:
+		return boatID
+	set(value):
+		boatID = value
+		
+var bgWater = load("res://assets/bg-water-(128x128).png")
+var oppBg = load("res://assets/opponent-bg-(128x128).png")
+
+func init(newCoords: Vector2) -> void:
+	gridCoordinates = newCoords
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	self.texture_normal = bgWater
+	self.texture_focused = oppBg
+	self.ignore_texture_size = true
+	self.stretch_mode = TextureButton.STRETCH_SCALE
+	self.custom_minimum_size = Vector2(64, 64)
+	#self.set_script(btnScript)
+	#self.set_grid_coords(Vector2(x,y))
+	self.hasBoat = false
+	self.pivot_offset = Vector2(32, 32)
+	
 	self.connect("focus_entered", _setup_preview_boat_placement)
-	Global.boat_placed_on_tile_map.connect(change_state_of_boat.bind())
+	self.connect("mouse_entered", _setup_preview_boat_placement)
+	self.connect("pressed", _place_boat)
 
 
 func set_grid_coords(newCoords: Vector2) -> void:
@@ -31,8 +54,9 @@ func _process(delta: float) -> void:
 func _setup_preview_boat_placement() -> void:
 	if Global.isPlacingBoat:
 		Global.setup_tile_focused_boat.emit(gridCoordinates)
+
+func _place_boat() -> void:
+	if Global.isPlacingBoat and Global.isPlacementValid:
+		Global.place_boat_at_tile.emit(gridCoordinates)
 		
-func change_state_of_boat(boat: Global.Boats) -> void:
-	print("test")
 	
-		

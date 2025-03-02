@@ -11,3 +11,4 @@ func _process(delta: float) -> void:
 func _on_pressed() -> void:
 	Global.isPlacingBoat = true
 	Global.setup_boat_selected.emit(Global.Boats.BATTLESHIP)
+	self.disabled = true

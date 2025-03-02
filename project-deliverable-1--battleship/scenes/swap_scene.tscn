@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct3wle6vn3soq"]
+
+[ext_resource type="Script" path="res://scripts/swap_scene.gd" id="1_vemgu"]
+[ext_resource type="Theme" uid="uid://umtdsshp86c3" path="res://button_theme.tres" id="1_ynjtm"]
+
+[node name="swap_scene" type="Node2D"]
+script = ExtResource("1_vemgu")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/Panel"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="pass to next player" type="Label" parent="Control/Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 100
+text = "Pass to next player"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="Button" type="Button" parent="Control/Panel/GridContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_ynjtm")
+text = "Are you ready?"
+
+[connection signal="pressed" from="Control/Panel/GridContainer/MarginContainer/Button" to="." method="_on_button_pressed"]
