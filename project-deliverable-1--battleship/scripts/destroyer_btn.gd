@@ -2,7 +2,7 @@ extends TextureButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	self.grab_focus()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -11,3 +11,4 @@ func _process(delta: float) -> void:
 func _on_pressed() -> void:
 	Global.isPlacingBoat = true
 	Global.setup_boat_selected.emit(Global.Boats.DESTROYER)
+	self.disabled = true

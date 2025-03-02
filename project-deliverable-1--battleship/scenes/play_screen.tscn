@@ -1,0 +1,201 @@
+[gd_scene load_steps=17 format=3 uid="uid://cu8vkppsycish"]
+
+[ext_resource type="Script" path="res://scripts/play_screen.gd" id="1_kunjd"]
+[ext_resource type="Texture2D" uid="uid://d4dj52sv6ypl8" path="res://assets/destroyer.png" id="2_vtyuh"]
+[ext_resource type="Texture2D" uid="uid://6hf2m1p7mo2r" path="res://assets/submarine-cruizer.png" id="3_1rv2m"]
+[ext_resource type="Texture2D" uid="uid://cdgmr7myk4yoh" path="res://assets/destroyer-added.png" id="3_66rhi"]
+[ext_resource type="Texture2D" uid="uid://baf71uwnxwfst" path="res://assets/destroyer-selected.png" id="4_4cxu0"]
+[ext_resource type="Texture2D" uid="uid://dmgabqkfx4r38" path="res://assets/battleship.png" id="4_fx5y3"]
+[ext_resource type="Texture2D" uid="uid://8kxaqlfsbutr" path="res://assets/carrier.png" id="5_c1rwx"]
+[ext_resource type="Texture2D" uid="uid://bld2c3fmpb4q" path="res://assets/submarine-cruizer-added.png" id="6_c3khf"]
+[ext_resource type="Texture2D" uid="uid://bskvggqh0oacu" path="res://assets/submarine-cruizer-selected.png" id="7_vorbi"]
+[ext_resource type="Texture2D" uid="uid://crt4o38jxkl2s" path="res://assets/battleship-added.png" id="9_j1frj"]
+[ext_resource type="Script" path="res://scripts/fire_button.gd" id="10_c2k1a"]
+[ext_resource type="Texture2D" uid="uid://6gk4ctr3phx6" path="res://assets/battleship-selected.png" id="10_dty6g"]
+[ext_resource type="Texture2D" uid="uid://dwc56fnbwcn6c" path="res://assets/carrier-added.png" id="12_4bklc"]
+[ext_resource type="Texture2D" uid="uid://cpxtroy1e3m1m" path="res://assets/carrier-selected.png" id="13_53ggo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6640"]
+bg_color = Color(0.0627451, 0.478431, 0.294118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbyi5"]
+bg_color = Color(0.466667, 0, 0.121569, 1)
+
+[node name="Play_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kunjd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShipsToPlace" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/ShipsToPlace"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Label" type="Label" parent="VBoxContainer/ShipsToPlace/MarginContainer2"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Enemy ships:"
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ShipsToPlace"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ShipsToPlace/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 30
+
+[node name="DestroyerBtn" type="TextureButton" parent="VBoxContainer/ShipsToPlace/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+texture_normal = ExtResource("2_vtyuh")
+texture_disabled = ExtResource("3_66rhi")
+texture_focused = ExtResource("4_4cxu0")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="SubmarineBtn" type="TextureButton" parent="VBoxContainer/ShipsToPlace/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 2
+texture_normal = ExtResource("3_1rv2m")
+texture_disabled = ExtResource("6_c3khf")
+texture_focused = ExtResource("7_vorbi")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="CruiserBtn" type="TextureButton" parent="VBoxContainer/ShipsToPlace/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 2
+texture_normal = ExtResource("3_1rv2m")
+texture_disabled = ExtResource("6_c3khf")
+texture_focused = ExtResource("7_vorbi")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Battleship" type="TextureButton" parent="VBoxContainer/ShipsToPlace/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+texture_normal = ExtResource("4_fx5y3")
+texture_disabled = ExtResource("9_j1frj")
+texture_focused = ExtResource("10_dty6g")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Carrier" type="TextureButton" parent="VBoxContainer/ShipsToPlace/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(320, 32)
+layout_mode = 2
+texture_normal = ExtResource("5_c1rwx")
+texture_disabled = ExtResource("12_4bklc")
+texture_focused = ExtResource("13_53ggo")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="PlayerBoardContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PlayerBoardContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/PlayerBoardContainer/MarginContainer"]
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/margin_left = 0
+
+[node name="Label2" type="Label" parent="VBoxContainer/PlayerBoardContainer/MarginContainer/MarginContainer4"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Fire at your enemy's ships by clicking on a tile, and then the fire button"
+autowrap_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/PlayerBoardContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+
+[node name="Label2" type="Label" parent="VBoxContainer/PlayerBoardContainer/MarginContainer/MarginContainer3"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Select a block on the grey board to fire at your enemy"
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PlayerBoardContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+
+[node name="player_board" type="GridContainer" parent="VBoxContainer/PlayerBoardContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+columns = 10
+
+[node name="shooting_board" type="GridContainer" parent="VBoxContainer/PlayerBoardContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+columns = 10
+
+[node name="FireBtn" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/FireBtn"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="Label2" type="Label" parent="VBoxContainer/FireBtn/MarginContainer3"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Click on the area you want to target, then click fire button"
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/FireBtn"]
+layout_mode = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 45
+theme_override_constants/margin_bottom = 45
+
+[node name="FireButton" type="Button" parent="VBoxContainer/FireBtn/MarginContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_b6640")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fbyi5")
+disabled = true
+text = "FIRE!"
+icon_alignment = 2
+script = ExtResource("10_c2k1a")
+
+[connection signal="pressed" from="VBoxContainer/FireBtn/MarginContainer/FireButton" to="." method="_on_fire_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/FireBtn/MarginContainer/FireButton" to="VBoxContainer/FireBtn/MarginContainer/FireButton" method="_on_pressed"]
